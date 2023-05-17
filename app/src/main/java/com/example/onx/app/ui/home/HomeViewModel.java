@@ -43,6 +43,7 @@ public class HomeViewModel extends ViewModel {
         this.getDeliveryBillsItemUseCase = getDeliveryBillsItemUseCase;
         this.userLoginUseCase = userLoginUseCase;
         getBillsItems(P_Process_Flag.NEW);
+        useData();
 
     }
 

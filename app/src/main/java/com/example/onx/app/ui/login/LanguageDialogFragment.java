@@ -1,25 +1,19 @@
 package com.example.onx.app.ui.login;
 
-import static android.content.ContentValues.TAG;
-
-import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
-
-import androidx.fragment.app.DialogFragment;
-import androidx.lifecycle.ViewModelProvider;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.fragment.app.DialogFragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.onx.R;
 import com.example.onx.databinding.FragmentLanguageDialogBinding;
 
 import java.util.Locale;
-import java.util.Objects;
 
 
 public class LanguageDialogFragment extends DialogFragment {
