@@ -1,5 +1,7 @@
 package com.example.onx;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -21,6 +23,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
+import android.util.Log;
 
 @AndroidEntryPoint
 public class MainActivity extends AppCompatActivity {
@@ -38,32 +41,12 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
 
         setContentView(binding.getRoot());
-        handelLang();
+
 
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
         navController = navHostFragment.getNavController();
 
     }
 
-    private void handelLang() {
-        languageViewModel.language.observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                changeLanguage(s);
-            }
-        });
-    }
 
-    private void changeLanguage(String language) {
-         String lang = language.equals("1")?"en":"ar";
-        Locale selectedLanguage = new Locale(lang);
-        Resources resources = getResources();
-        Configuration configuration = resources.getConfiguration();
-        if (!selectedLanguage.equals(configuration.locale)) {
-            Configuration newConfig = new Configuration(configuration);
-            newConfig.setLocale(selectedLanguage);
-            Locale.setDefault(selectedLanguage);
-            resources.updateConfiguration(newConfig, null);
-
-    }
-}}
+}

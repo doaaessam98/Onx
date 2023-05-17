@@ -3,6 +3,8 @@ package com.example.onx.app.ui.login;
 import static android.content.ContentValues.TAG;
 
 import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 
 import androidx.fragment.app.DialogFragment;
@@ -16,6 +18,7 @@ import android.view.ViewGroup;
 import com.example.onx.R;
 import com.example.onx.databinding.FragmentLanguageDialogBinding;
 
+import java.util.Locale;
 import java.util.Objects;
 
 
@@ -64,6 +67,7 @@ public class LanguageDialogFragment extends DialogFragment {
             @Override
             public void onClick(View v) {
                 languageViewModel.saveLang(lang);
+                changeLanguage(lang);
                 dismiss();
                 requireActivity().recreate();
             }
@@ -73,7 +77,18 @@ public class LanguageDialogFragment extends DialogFragment {
     }
 
 
+    private void changeLanguage(String language) {
+        String lang = language.equals("1")?"en":"ar";
+        Locale selectedLanguage = new Locale(lang);
+        Resources resources = getResources();
+        Configuration configuration = resources.getConfiguration();
+        if (!selectedLanguage.equals(configuration.locale)) {
+            Configuration newConfig = new Configuration(configuration);
+            newConfig.setLocale(selectedLanguage);
+            Locale.setDefault(selectedLanguage);
+            resources.updateConfiguration(newConfig, null);
 
+        }}
 
 }
 

@@ -65,7 +65,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toEndOf="@id/v_g1"
 
-                android:text="@={homeViewModel.userName}"
+                android:text="@{homeViewModel.userName}"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"
