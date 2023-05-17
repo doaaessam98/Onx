@@ -2,6 +2,8 @@ package com.example.onx.app.ui.login;
 
 import android.util.Log;
 
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.onx.domain.usecase.LanguageUseCase;
@@ -18,7 +20,11 @@ public class LanguageViewModel extends ViewModel {
 
     private  final LanguageUseCase languageUseCase;
 
-     @Inject
+    private MutableLiveData<String> _language = new MutableLiveData<>();
+    public LiveData<String> language = _language;
+    private Disposable disposable;
+
+    @Inject
     public LanguageViewModel(LanguageUseCase languageUseCase) {
         this.languageUseCase = languageUseCase;
     }
@@ -27,5 +33,20 @@ public class LanguageViewModel extends ViewModel {
 
     public  void saveLang(String lang){
           languageUseCase.saveLang(lang);
+    }
+
+    public void getLanguage(){
+        disposable = languageUseCase.getLanguage().subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                        result -> {
+                            if (result!=null) {
+                               _language.setValue(result);
+                            }
+                        },
+                        error -> {
+                            Log.e("MyViewModel", "Error: " + error.getMessage());
+                        }
+                );
     }
 }

@@ -65,6 +65,7 @@ public class LanguageDialogFragment extends DialogFragment {
             public void onClick(View v) {
                 languageViewModel.saveLang(lang);
                 dismiss();
+                requireActivity().recreate();
             }
         });
 

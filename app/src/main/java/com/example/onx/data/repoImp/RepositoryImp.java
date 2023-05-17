@@ -27,26 +27,31 @@ public class RepositoryImp  implements Repository {
     private final RxDataStore<Preferences> dataStore;
     Preferences.Key<String> KEY = PreferencesKeys.stringKey("user");
     Preferences.Key<String> LAN_KEY = PreferencesKeys.stringKey("lang");
-
+    String language;
 
     @Inject
     public RepositoryImp(RemoteDataSource remoteDataSource,RxDataStore<Preferences> userLoginStatus) {
         this.remoteDataSource = remoteDataSource;
         this.dataStore = userLoginStatus;
+        getLang().subscribe(language -> {
+                   this.language = language;
+                }, throwable -> {
+
+                });
 
     }
 
 
     @Override
     public Single<LoginResponse> CheckDeliveryLogin(String lang, String userName, String password) {
-        UserRequestData requestData = new UserRequestData(lang, userName, password);
+        UserRequestData requestData = new UserRequestData(language, userName, password);
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"),requestData.convertRequestDataToJson());
         return remoteDataSource.CheckDeliveryLogin(requestBody);
     }
 
     @Override
     public Single<DeliveryBillsItem> getDeliveryBillsItems(String lang, String processed_flag) {
-        BillsItemRequestData requestData = new BillsItemRequestData("1010",lang, processed_flag);
+        BillsItemRequestData requestData = new BillsItemRequestData("1010",language, processed_flag);
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"),requestData.convertRequestDataToJson());
         return remoteDataSource.GetDeliveryBillsItems(requestBody);
     }
@@ -77,11 +82,19 @@ public class RepositoryImp  implements Repository {
         return dataStore.data().map(preferences -> preferences.get(LAN_KEY));
     }
 
+    public Single<String> getLang() {
+        return dataStore.data()
+                .map(preferences -> preferences.get(LAN_KEY))
+                .firstOrError();
+    }
+
     @Override
     public Single<Preferences> saveLanguag(String lang) {
         Single<Preferences> updateResult =  dataStore.updateDataAsync(prefsIn -> {
             MutablePreferences mutablePreferences = prefsIn.toMutablePreferences();
-            mutablePreferences.set(LAN_KEY,lang);
+            String currentLang = prefsIn.get(LAN_KEY);
+
+            mutablePreferences.set(LAN_KEY,currentLang!=null?lang:"1");
             return Single.just(mutablePreferences);
         });
         return updateResult;

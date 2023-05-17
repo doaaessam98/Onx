@@ -4,6 +4,8 @@ import com.example.onx.domain.repo.Repository;
 
 import javax.inject.Inject;
 
+import io.reactivex.rxjava3.core.Flowable;
+
 public class LanguageUseCase {
 
 
@@ -17,6 +19,11 @@ public class LanguageUseCase {
     public void saveLang(String lang){
         repository.saveLanguag(lang);
     }
+
+    public Flowable<String> getLanguage(){
+        return repository.getLanguage();
+    }
+
 
 
 

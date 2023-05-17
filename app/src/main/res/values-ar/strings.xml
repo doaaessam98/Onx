@@ -2,10 +2,10 @@
 <resources>
 
     <string name="app_name">Onx</string>
-    <string name="welcome_back">Welcome Back!</string>
-    <string name="login_explain_text">Log back into your account</string>
-    <string name="user_id">User ID</string>
-    <string name="password">Password</string>
+    <string name="welcome_back">مرحبا بعودتك!</string>
+    <string name="login_explain_text">قم بتسجيل الدخول مرة أخرى إلى حسابك</string>
+    <string name="user_id">رقم المستحدم</string>
+    <string name="password">كلمة السر</string>
     <string name="login">Log in</string>
     <string name="order_details">Order\nDetails</string>
     <string name="statues">Status</string>
