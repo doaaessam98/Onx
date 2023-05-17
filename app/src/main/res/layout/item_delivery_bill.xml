@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="billItem"
+            type="com.example.onx.domain.models.BillItem" />
+
+    </data>
+   <com.google.android.material.card.MaterialCardView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       app:cardCornerRadius="@dimen/_12sdp"
+       android:layout_margin="8dp"
+       android:elevation="@dimen/_16sdp"
+       app:cardElevation="@dimen/_16sdp"
+       android:background="@color/green"
+
+
+       >
+
+       <androidx.constraintlayout.widget.ConstraintLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           >
+
+           <com.google.android.material.textview.MaterialTextView
+               android:id="@+id/item_num"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginBottom="@dimen/_32sdp"
+               android:text="@{billItem.itemNumber}"
+               android:layout_marginVertical="@dimen/_16sdp"
+               android:layout_marginStart="@dimen/_16sdp"
+               android:textColor="@color/gray"
+               android:textSize="16sp"
+               android:textStyle="normal"
+               app:layout_constraintTop_toTopOf = "parent"
+               app:layout_constraintStart_toStartOf="parent"
+               />
+
+           <androidx.constraintlayout.widget.Guideline
+               android:id="@+id/h_g1"
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+               android:orientation="horizontal"
+               app:layout_constraintGuide_percent=".4" />
+
+           <androidx.constraintlayout.widget.Guideline
+               android:id="@+id/h_g2"
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+               android:orientation="horizontal"
+               app:layout_constraintGuide_percent=".90" />
+
+           <View
+               android:layout_width="1dp"
+               android:layout_height="0dp"
+               android:background="@color/gray"
+               app:layout_constraintStart_toStartOf="@id/v_g1"
+               app:layout_constraintTop_toBottomOf="@id/h_g1"
+               app:layout_constraintBottom_toTopOf="@id/h_g2"
+               />
+
+
+           <com.google.android.material.textview.MaterialTextView
+               android:id="@+id/item_statue"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginBottom="@dimen/_32sdp"
+               android:text="@string/statues"
+               android:textColor="@color/gray"
+               android:textSize="16sp"
+               android:textStyle="normal"
+               app:layout_constraintTop_toBottomOf="@id/h_g1"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintEnd_toStartOf="@id/v_g1"
+               />
+
+           <com.google.android.material.textview.MaterialTextView
+               android:id="@+id/item_statue_value"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginBottom="@dimen/_32sdp"
+               android:text="@{billItem.itemStatus}"
+               android:textColor="@color/green"
+               android:textSize="16sp"
+               android:paddingBottom="@dimen/_16sdp"
+               app:layout_constraintTop_toBottomOf="@id/item_statue"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintEnd_toStartOf="@id/v_g1"
+               />
+
+
+
+           <androidx.constraintlayout.widget.Guideline
+               android:id="@+id/v_g1"
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+               android:orientation="vertical"
+               app:layout_constraintGuide_percent=".30" />
+
+
+           <com.google.android.material.textview.MaterialTextView
+               android:id="@+id/item_price"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginBottom="@dimen/_32sdp"
+               android:text="@string/total_price"
+               android:textColor="@color/gray"
+               android:textSize="16sp"
+               android:textStyle="normal"
+               app:layout_constraintTop_toBottomOf="@id/h_g1"
+               app:layout_constraintStart_toEndOf="@id/v_g1"
+               app:layout_constraintEnd_toStartOf="@id/v_g2"
+               />
+
+           <com.google.android.material.textview.MaterialTextView
+               android:id="@+id/item_price_value"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="@{billItem.itemPrice}"
+               android:textColor="@color/text_color"
+               android:textSize="16sp"
+               android:textStyle="bold"
+               app:layout_constraintTop_toBottomOf="@id/item_price"
+               app:layout_constraintStart_toStartOf="@id/item_price"
+               app:layout_constraintEnd_toEndOf="@id/item_price"
+               />
+
+           <androidx.constraintlayout.widget.Guideline
+               android:id="@+id/v_g2"
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+               android:orientation="vertical"
+               app:layout_constraintGuide_percent=".55" />
+
+           <View
+               android:layout_width="1dp"
+               android:layout_height="0dp"
+               android:background="@color/gray"
+               app:layout_constraintStart_toStartOf="@id/v_g2"
+               app:layout_constraintTop_toBottomOf="@id/h_g1"
+               app:layout_constraintBottom_toTopOf="@id/h_g2"
+               />
+           <com.google.android.material.textview.MaterialTextView
+               android:id="@+id/item_date"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginBottom="@dimen/_32sdp"
+               android:text="@string/date"
+               android:textColor="@color/gray"
+               android:textSize="16sp"
+               android:textStyle="normal"
+               app:layout_constraintTop_toBottomOf="@id/h_g1"
+               app:layout_constraintStart_toEndOf="@id/v_g2"
+               app:layout_constraintEnd_toStartOf="@id/details_text"
+               />
+
+           <com.google.android.material.textview.MaterialTextView
+               android:id="@+id/item_date_value"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="@{billItem.itemDate}"
+               android:textColor="@color/text_color"
+               android:textSize="16sp"
+               android:textStyle="bold"
+               app:layout_constraintTop_toBottomOf="@id/item_date"
+               app:layout_constraintStart_toStartOf="@id/item_date"
+               app:layout_constraintEnd_toEndOf="@id/item_date"
+               />
+
+
+           <com.google.android.material.textview.MaterialTextView
+               android:id="@+id/details_text"
+               android:layout_width="wrap_content"
+               android:layout_height="0dp"
+               android:background="@color/green"
+               android:gravity="center"
+               android:padding="@dimen/_8sdp"
+               android:text="@string/order_details"
+               android:textColor="@color/white"
+               android:textSize="16sp"
+               android:textStyle="normal"
+               app:layout_constraintTop_toTopOf="parent"
+               app:layout_constraintBottom_toBottomOf="parent"
+               app:layout_constraintEnd_toEndOf="parent"
+                />
+
+
+
+
+
+
+       </androidx.constraintlayout.widget.ConstraintLayout>
+
+   </com.google.android.material.card.MaterialCardView>
+
+</layout>

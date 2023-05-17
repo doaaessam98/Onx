@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Onx</string>
+    <string name="welcome_back">Welcome Back!</string>
+    <string name="login_explain_text">Log back into your account</string>
+    <string name="user_id">User ID</string>
+    <string name="password">Password</string>
+    <string name="login">Log in</string>
+    <string name="order_details">Order\nDetails</string>
+    <string name="statues">Status</string>
+    <string name="total_price">Total price</string>
+    <string name="date">Date</string>
+    <string name="other">Other</string>
+    <string name="new_item">New</string>
+    <string name="text_empty">No orders yet</string>
+    <string name="text_empty2">You don\'t have any orders in your history.</string>
+    <string name="active">Active</string>
+    <string name="filter">Filter</string>
+    <string name="order_date">Order Date</string>
+    <string name="from">From</string>
+    <string name="text_to">To</string>
+    <string name="cancel">Cancel</string>
+    <string name="apply">Apply</string>
+    <string name="language">Choose Your Preferred Language</string>
+    <string name="arabic">Arabic</string>
+    <string name="english">English</string>
+    <string name="delivery">Delivered</string>
+    <string name="partial">Partial Return</string>
+    <string name="full_returned">Full Returned</string>
+
+
+
+
+</resources>
